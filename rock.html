@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Rock,Paper,Scissors.</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		//Global Variables
+		var playerDraw = 'This is a tie';
+		var playerWinRock = 'You win!! Rock beats scissors!';
+		var playerWinScissors = 'You win!! scissors beats paper';
+		var playerWinPaper = 'You win!! Paper beats rock';
+		var playerLose = 'You lose, try again.';
+		
+		
+		//This function will be the CPU portion of the game.
+		function computerChoice(){
+			//This states the array for the values I want it to randomize.
+			var myArray = ['rock','paper','scissors']
+			//This goes through the array and randomly picks a value.
+			var randomizer = myArray[Math.floor(Math.random()* myArray.length)];
+			//Lastly this returns the value it picks
+			return randomizer
+		}
+
+		
+		//This is the main game function
+		function roundPlay(playerSelection,computerSelection){
+			
+
+			if (playerSelection == 'rock' && computerSelection == 'rock'){
+				alert(playerDraw);
+			}else if (playerSelection == 'rock' && computerSelection == "scissors"){
+				alert(playerWinRock);
+			}else if (playerSelection == 'scissors' && computerSelection =='paper'){
+				alert(playerWinScissors);
+			}else if (playerSelection == 'paper' && computerSelection == "rock"){
+				alert(playerWinPaper);
+			}else{
+				alert(playerLose);
+
+			}
+		}
+
+		
+
+
+
+		//This function is to loop the game 5 games.
+		function game (){
+			for (let i = 1; i< 6; i++){
+				
+				var playerSelection = prompt('Please choose: Rock, Paper, or Scissors').toLowerCase();
+				var computerSelection = computerChoice().toLowerCase();
+				roundPlay(playerSelection,computerSelection);
+				
+			}
+
+		}
+
+
+		//This line of code runs the roundPlay program.
+		game();
+		
+
+
+
+
+	</script>
+</body>
+</html>
