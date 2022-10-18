@@ -14,6 +14,8 @@
 		var playerWinScissors = 'You win!! scissors beats paper';
 		var playerWinPaper = 'You win!! Paper beats rock';
 		var playerLose = 'You lose, try again.';
+		let playerScore = 0;
+		let computerScore = 0;
 		
 		
 		//This function will be the CPU portion of the game.
@@ -33,24 +35,54 @@
 
 			if (playerSelection == 'rock' && computerSelection == 'rock'){
 				alert(playerDraw);
-			}else if (playerSelection == 'rock' && computerSelection == "scissors"){
+				
+			}else if (playerSelection == 'rock' && computerSelection == "scissors"){				
 				alert(playerWinRock);
+				console.log (playerScore+=1);
 			}else if (playerSelection == 'scissors' && computerSelection =='paper'){
+				
 				alert(playerWinScissors);
+				console.log (playerScore+=1)
 			}else if (playerSelection == 'paper' && computerSelection == "rock"){
 				alert(playerWinPaper);
+				console.log (playerScore+=1);
 			}else{
 				alert(playerLose);
+				console.log (computerScore+=1);
 
 			}
+
+			
 		}
 
-		
+
+		function scoreboard(){
+
+			let winner ='You win!! Your score is '+ playerScore;
+			let opponentWin = 'You lose the CPU scored '+computerScore;
+			let tie = 'You tied please play again '+playerScore + computerScore
+
+			if (playerScore > computerScore){
+				alert(winner);
+				
+			}else if(playerScore==computerScore){
+				alert(tie);
+
+
+			}else {
+				alert(opponentWin);
+			}
+
+		}
 
 
 
 		//This function is to loop the game 5 games.
 		function game (){
+
+			
+
+
 			for (let i = 1; i< 6; i++){
 				
 				var playerSelection = prompt('Please choose: Rock, Paper, or Scissors').toLowerCase();
@@ -58,12 +90,15 @@
 				roundPlay(playerSelection,computerSelection);
 				
 			}
-
+			//Function is called at the end of the game for the score and to determine who won.
+			scoreboard();
 		}
+
 
 
 		//This line of code runs the roundPlay program.
 		game();
+
 		
 
 
